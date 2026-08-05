@@ -1,0 +1,235 @@
+:root {
+  color-scheme: light;
+  --bg-page:       #eef0f7;
+  --ink:           #14171f;
+  --ink-secondary: #5b6272;
+  --ink-muted:     #8890a0;
+  --rule:          #d6dae6;
+  --tier-0: #86b6ef; --tier-0-ink: #0b2138;
+  --tier-1: #6da7ec; --tier-1-ink: #0b1c33;
+  --tier-2: #5598e7; --tier-2-ink: #0b1c33;
+  --tier-3: #3987e5; --tier-3-ink: #ffffff;
+  --tier-4: #2a78d6; --tier-4-ink: #ffffff;
+  --tier-5: #1c5cab; --tier-5-ink: #ffffff;
+  --tier-6: #184f95; --tier-6-ink: #ffffff;
+  --tier-7: #104281; --tier-7-ink: #ffffff;
+  --tier-8: #0d366b; --tier-8-ink: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --bg-page:       #0b0d12;
+    --ink:           #eef0f7;
+    --ink-secondary: #a7aec2;
+    --ink-muted:     #6c7286;
+    --rule:          #262c3a;
+    --tier-0: #cde2fb; --tier-0-ink: #0b2138;
+    --tier-1: #b7d3f6; --tier-1-ink: #0b1c33;
+    --tier-2: #86b6ef; --tier-2-ink: #0b2138;
+    --tier-3: #6da7ec; --tier-3-ink: #0b1c33;
+    --tier-4: #5598e7; --tier-4-ink: #0b1c33;
+    --tier-5: #3987e5; --tier-5-ink: #ffffff;
+    --tier-6: #2a78d6; --tier-6-ink: #ffffff;
+    --tier-7: #1c5cab; --tier-7-ink: #ffffff;
+    --tier-8: #184f95; --tier-8-ink: #ffffff;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-page:       #0b0d12;
+  --ink:           #eef0f7;
+  --ink-secondary: #a7aec2;
+  --ink-muted:     #6c7286;
+  --rule:          #262c3a;
+  --tier-0: #cde2fb; --tier-0-ink: #0b2138;
+  --tier-1: #b7d3f6; --tier-1-ink: #0b1c33;
+  --tier-2: #86b6ef; --tier-2-ink: #0b2138;
+  --tier-3: #6da7ec; --tier-3-ink: #0b1c33;
+  --tier-4: #5598e7; --tier-4-ink: #0b1c33;
+  --tier-5: #3987e5; --tier-5-ink: #ffffff;
+  --tier-6: #2a78d6; --tier-6-ink: #ffffff;
+  --tier-7: #1c5cab; --tier-7-ink: #ffffff;
+  --tier-8: #184f95; --tier-8-ink: #ffffff;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg-page:       #eef0f7;
+  --ink:           #14171f;
+  --ink-secondary: #5b6272;
+  --ink-muted:     #8890a0;
+  --rule:          #d6dae6;
+  --tier-0: #86b6ef; --tier-0-ink: #0b2138;
+  --tier-1: #6da7ec; --tier-1-ink: #0b1c33;
+  --tier-2: #5598e7; --tier-2-ink: #0b1c33;
+  --tier-3: #3987e5; --tier-3-ink: #ffffff;
+  --tier-4: #2a78d6; --tier-4-ink: #ffffff;
+  --tier-5: #1c5cab; --tier-5-ink: #ffffff;
+  --tier-6: #184f95; --tier-6-ink: #ffffff;
+  --tier-7: #104281; --tier-7-ink: #ffffff;
+  --tier-8: #0d366b; --tier-8-ink: #ffffff;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-page);
+  color: var(--ink);
+}
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+.stage {
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 28px 24px;
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.y-axis {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.y-axis .axis-label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+.y-axis .axis-track {
+  flex: 1;
+  width: 8px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.axis-track > span { flex: 1; }
+
+.stack {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.col-key {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 10px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+.col-key span:nth-child(1) { text-align: left; }
+.col-key span:nth-child(2) { text-align: center; }
+.col-key span:nth-child(3) { text-align: right; }
+
+main.pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.tier-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tier-row + .tier-row { margin-top: 3px; }
+.tier-row:first-of-type .tier { border-radius: 12px 12px 0 0; padding-top: 18px; }
+.tier-row:last-of-type .tier { border-radius: 0 0 12px 12px; padding-bottom: 20px; }
+
+.tier-slot {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.tier {
+  width: var(--tw);
+  margin: 0 auto;
+  background: var(--tc);
+  color: var(--tink);
+  border-radius: 10px 10px 0 0;
+  padding: 14px clamp(14px, 3vw, 26px);
+  position: relative;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 16px;
+}
+
+.col-pulse { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; min-width: 0; }
+.col-both  { display: flex; flex-direction: column; gap: 4px; align-items: center; min-width: 0; }
+.col-sound { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; min-width: 0; }
+
+.chip {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.3;
+  outline: none;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+.chip:hover, .chip:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.chip:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Pulse / Sound tier — text sized up over the base 13px chip. */
+.tier--big-text .chip {
+  font-size: 35px;
+}
+
+/* A shallow foundation layer beneath Pulse/Sound (e.g. Action). */
+.tier--thin {
+  padding-top: 8px;
+  padding-bottom: 8px !important;
+}
+
+
+@media (max-width: 640px) {
+  .stage { flex-direction: column; gap: 16px; }
+  .y-axis { flex-direction: row; }
+  .y-axis .axis-track {
+    flex: 1;
+    flex-direction: row;
+    width: auto;
+    height: 8px;
+    min-height: 0;
+  }
+  .cols { grid-template-columns: 1fr; gap: 8px; }
+  .col-pulse, .col-sound { align-items: flex-start; }
+  main.pyramid .tier { width: 100% !important; }
+  .col-key { grid-template-columns: 1fr; gap: 2px; }
+  .col-key span { text-align: left !important; }
+}
