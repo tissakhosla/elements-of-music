@@ -4,6 +4,7 @@
 function chip(label) {
   const el = document.createElement("span");
   el.className = "chip";
+  if (!label.includes(" ")) el.classList.add("chip--word");
   el.tabIndex = 0;
   el.textContent = label;
   return el;

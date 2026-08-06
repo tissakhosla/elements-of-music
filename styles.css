@@ -10,10 +10,11 @@
   --tier-2: #5598e7; --tier-2-ink: #0b1c33;
   --tier-3: #3987e5; --tier-3-ink: #ffffff;
   --tier-4: #2a78d6; --tier-4-ink: #ffffff;
-  --tier-5: #1c5cab; --tier-5-ink: #ffffff;
-  --tier-6: #184f95; --tier-6-ink: #ffffff;
-  --tier-7: #104281; --tier-7-ink: #ffffff;
-  --tier-8: #0d366b; --tier-8-ink: #ffffff;
+  --tier-5: #256abf; --tier-5-ink: #ffffff;
+  --tier-6: #1c5cab; --tier-6-ink: #ffffff;
+  --tier-7: #184f95; --tier-7-ink: #ffffff;
+  --tier-8: #104281; --tier-8-ink: #ffffff;
+  --tier-9: #0d366b; --tier-9-ink: #ffffff;
 }
 @media (prefers-color-scheme: dark) {
   :root:where(:not([data-theme="light"])) {
@@ -30,8 +31,9 @@
     --tier-4: #5598e7; --tier-4-ink: #0b1c33;
     --tier-5: #3987e5; --tier-5-ink: #ffffff;
     --tier-6: #2a78d6; --tier-6-ink: #ffffff;
-    --tier-7: #1c5cab; --tier-7-ink: #ffffff;
-    --tier-8: #184f95; --tier-8-ink: #ffffff;
+    --tier-7: #256abf; --tier-7-ink: #ffffff;
+    --tier-8: #1c5cab; --tier-8-ink: #ffffff;
+    --tier-9: #184f95; --tier-9-ink: #ffffff;
   }
 }
 :root[data-theme="dark"] {
@@ -48,8 +50,9 @@
   --tier-4: #5598e7; --tier-4-ink: #0b1c33;
   --tier-5: #3987e5; --tier-5-ink: #ffffff;
   --tier-6: #2a78d6; --tier-6-ink: #ffffff;
-  --tier-7: #1c5cab; --tier-7-ink: #ffffff;
-  --tier-8: #184f95; --tier-8-ink: #ffffff;
+  --tier-7: #256abf; --tier-7-ink: #ffffff;
+  --tier-8: #1c5cab; --tier-8-ink: #ffffff;
+  --tier-9: #184f95; --tier-9-ink: #ffffff;
 }
 :root[data-theme="light"] {
   color-scheme: light;
@@ -63,10 +66,11 @@
   --tier-2: #5598e7; --tier-2-ink: #0b1c33;
   --tier-3: #3987e5; --tier-3-ink: #ffffff;
   --tier-4: #2a78d6; --tier-4-ink: #ffffff;
-  --tier-5: #1c5cab; --tier-5-ink: #ffffff;
-  --tier-6: #184f95; --tier-6-ink: #ffffff;
-  --tier-7: #104281; --tier-7-ink: #ffffff;
-  --tier-8: #0d366b; --tier-8-ink: #ffffff;
+  --tier-5: #256abf; --tier-5-ink: #ffffff;
+  --tier-6: #1c5cab; --tier-6-ink: #ffffff;
+  --tier-7: #184f95; --tier-7-ink: #ffffff;
+  --tier-8: #104281; --tier-8-ink: #ffffff;
+  --tier-9: #0d366b; --tier-9-ink: #ffffff;
 }
 
 * { box-sizing: border-box; }
@@ -106,6 +110,8 @@ body {
   gap: 10px;
 }
 .y-axis .axis-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -115,11 +121,11 @@ body {
 }
 .y-axis .axis-track {
   flex: 1;
-  width: 8px;
+  width: 4px;
   min-height: 160px;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 3px;
   overflow: hidden;
 }
 .axis-track > span { flex: 1; }
@@ -132,8 +138,9 @@ body {
 }
 
 .col-key {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -141,11 +148,13 @@ body {
   color: var(--ink-muted);
   margin: 10px 0 0;
   padding-top: 8px;
-  border-top: 1px solid var(--rule);
 }
-.col-key span:nth-child(1) { text-align: left; }
-.col-key span:nth-child(2) { text-align: center; }
-.col-key span:nth-child(3) { text-align: right; }
+.col-key span { flex-shrink: 0; }
+.col-key .axis-line {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
 
 main.pyramid {
   display: flex;
@@ -160,7 +169,7 @@ main.pyramid {
 }
 .tier-row + .tier-row { margin-top: 3px; }
 .tier-row:first-of-type .tier { border-radius: 12px 12px 0 0; padding-top: 18px; }
-.tier-row:last-of-type .tier { border-radius: 0 0 12px 12px; padding-bottom: 20px; }
+.tier-row:last-of-type .tier { border-radius: 10px 10px 0 0; padding-bottom: 20px; }
 
 .tier-slot {
   flex: 1;
@@ -196,6 +205,11 @@ main.pyramid {
   max-width: 100%;
   overflow-wrap: break-word;
 }
+/* A single word (no space) is never allowed to break — only multi-word
+   phrases may wrap, and only at the space between words. */
+.chip--word {
+  white-space: nowrap;
+}
 .chip:hover, .chip:focus-visible {
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -207,7 +221,7 @@ main.pyramid {
 
 /* Pulse / Sound tier — text sized up over the base 13px chip. */
 .tier--big-text .chip {
-  font-size: 35px;
+  font-size: 26px;
 }
 
 /* A shallow foundation layer beneath Pulse/Sound (e.g. Action). */
@@ -218,18 +232,15 @@ main.pyramid {
 
 
 @media (max-width: 640px) {
-  .stage { flex-direction: column; gap: 16px; }
-  .y-axis { flex-direction: row; }
-  .y-axis .axis-track {
-    flex: 1;
-    flex-direction: row;
-    width: auto;
-    height: 8px;
-    min-height: 0;
-  }
-  .cols { grid-template-columns: 1fr; gap: 8px; }
-  .col-pulse, .col-sound { align-items: flex-start; }
-  main.pyramid .tier { width: 100% !important; }
-  .col-key { grid-template-columns: 1fr; gap: 2px; }
-  .col-key span { text-align: left !important; }
+  .stage { padding: 20px 16px; gap: 12px; }
+  /* No taper on phone — every tier is full width. The simple-to-complex
+     hierarchy still reads from the color ramp and vertical order. */
+  main.pyramid .tier { width: 100%; }
+  .cols { gap: 8px 10px; }
+
+  /* Square off every tier — only the very top and very bottom keep their
+     rounded corners (set by .tier-row:first-of-type/:last-of-type below,
+     which stay in effect since they're more specific than this reset). */
+  .tier { border-radius: 0; }
+  .tier-row:last-of-type .tier { border-radius: 0 0 12px 12px; }
 }

@@ -1,6 +1,6 @@
 // Elements of Music — tier data
 //
-// Tiers run from simplest (0, the foundations) to most complex (8, the apex).
+// Tiers run from simplest (0, the foundations) to most complex (9, the apex).
 // Within each tier, items are grouped by which base they draw on:
 //   pulse  — builds on Pulse (time/rhythm side)
 //   sound  — builds on Sound (pitch/tone side)
@@ -43,11 +43,15 @@ class Tier {
 }
 
 const TIERS = [
+  new Tier(9, 20, "dark", {
+    both: ["Music"],
+  }),
   new Tier(8, 28, "dark", {
-    both: ["Jazz Improvisation"],
+    both: ["Reflexes"]
   }),
   new Tier(7, 36, "dark", {
     pulse: ["Riffs"],
+    both: ["Hearing", "Math"],
     sound: ["Turnarounds"]
   }),
   new Tier(6, 48, "dark", {
@@ -66,8 +70,7 @@ const TIERS = [
     sound: ["Dynamics"],
   }),
   new Tier(3, 82, "light", {
-    pulse: ["Tempos", "Groove(s)", "Ride"],
-    both: ["Swing", "Funk"],
+    pulse: ["Tempos", "Groove(s)", "Ride", "Swing"],
     sound: ["Keys", "Intervals", "Chords", "Scales"],
   }),
   new Tier(2, 90, "light", {
@@ -81,7 +84,7 @@ const TIERS = [
     bigText: true,
   }),
   new Tier(0, 100, "light", {
-    both: ["Action"],
+    both: ["Action", "Intention", "Understanding"],
     thin: true,
   }),
 ];
