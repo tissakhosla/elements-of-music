@@ -180,6 +180,7 @@ main.pyramid {
 
 .tier {
   width: var(--tw);
+  min-width: 0;
   margin: 0 auto;
   background: var(--tc);
   color: var(--tink);
@@ -268,14 +269,7 @@ main.pyramid {
     font-size: clamp(13px, 5dvh, 26px);
   }
 
-  .y-axis { gap: clamp(3px, 1.1dvh, 10px); }
-  .y-axis .axis-track { min-height: clamp(60px, 18dvh, 160px); width: 4px; }
-  .y-axis .axis-label { font-size: clamp(7px, 1.2dvh, 11px); }
-
-  .col-key {
-    gap: 12px;
-    margin: clamp(3px, 1.1dvh, 10px) 0 0;
-    padding-top: clamp(2px, 0.9dvh, 8px);
-    font-size: clamp(7px, 1.2dvh, 11px);
-  }
+  /* Drop both axes on phone — they cost real estate without adding much
+     at this size, and every pixel back into the pyramid helps it fit. */
+  .y-axis, .col-key { display: none; }
 }
