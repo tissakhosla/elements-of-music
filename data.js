@@ -44,10 +44,10 @@ class Tier {
 
 const TIERS = [
   new Tier(9, 20, "dark", {
-    both: ["Music"],
+    both: ["Music", "Expression"],
   }),
   new Tier(8, 28, "dark", {
-    both: ["Reflexes"]
+    both: ["Reflexes", "Velocity"]
   }),
   new Tier(7, 36, "dark", {
     pulse: ["Riffs"],
@@ -61,8 +61,8 @@ const TIERS = [
   }),
   new Tier(5, 60, "dark", {
     pulse: ["Rhythm"],
-    both: ["Blues"],
-    sound: ["Melody", "Harmony"],
+    both: ["Blues", "Harmony"],
+    sound: ["Melody"],
   }),
   new Tier(4, 72, "dark", {
     pulse: ["Call", "Response"],
@@ -71,6 +71,7 @@ const TIERS = [
   }),
   new Tier(3, 82, "light", {
     pulse: ["Tempos", "Groove(s)", "Ride", "Swing"],
+    both: ["Repertoire"],
     sound: ["Keys", "Intervals", "Chords", "Scales"],
   }),
   new Tier(2, 90, "light", {
