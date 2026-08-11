@@ -73,6 +73,86 @@
   --tier-9: #0d366b; --tier-9-ink: #ffffff;
 }
 
+/* "Ember" — a warm amber-to-maroon palette, opted into per-page via
+   body[data-palette="ember"] (used by ensemble.html). Same four-selector
+   shape as the default blue palette above: base light values, a
+   prefers-color-scheme dark override, and the two explicit data-theme
+   overrides for when a page forces one or the other. */
+body[data-palette="ember"] {
+  color-scheme: light;
+  --bg-page:       #faf3e8;
+  --ink:           #2a1608;
+  --ink-secondary: #6b4a30;
+  --ink-muted:     #a08868;
+  --rule:          #e8d9c0;
+  --tier-0: #f3d39b; --tier-0-ink: #3a1c0e;
+  --tier-1: #efc080; --tier-1-ink: #3a1c0e;
+  --tier-2: #ecab65; --tier-2-ink: #3a1c0e;
+  --tier-3: #e99449; --tier-3-ink: #3a1c0e;
+  --tier-4: #e57a2e; --tier-4-ink: #3a1c0e;
+  --tier-5: #da5f1b; --tier-5-ink: #3a1c0e;
+  --tier-6: #bf4a18; --tier-6-ink: #ffffff;
+  --tier-7: #a33814; --tier-7-ink: #ffffff;
+  --tier-8: #882811; --tier-8-ink: #ffffff;
+  --tier-9: #6d1b0d; --tier-9-ink: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  body[data-palette="ember"]:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --bg-page:       #1a0f08;
+    --ink:           #f5e6d3;
+    --ink-secondary: #d8b998;
+    --ink-muted:     #8f6f52;
+    --rule:          #3a2818;
+    --tier-0: #f9efd2; --tier-0-ink: #3a1c0e;
+    --tier-1: #f6e2b6; --tier-1-ink: #3a1c0e;
+    --tier-2: #f3d39b; --tier-2-ink: #3a1c0e;
+    --tier-3: #efc080; --tier-3-ink: #3a1c0e;
+    --tier-4: #ecab65; --tier-4-ink: #3a1c0e;
+    --tier-5: #e99449; --tier-5-ink: #3a1c0e;
+    --tier-6: #e57a2e; --tier-6-ink: #3a1c0e;
+    --tier-7: #da5f1b; --tier-7-ink: #3a1c0e;
+    --tier-8: #bf4a18; --tier-8-ink: #ffffff;
+    --tier-9: #a33814; --tier-9-ink: #ffffff;
+  }
+}
+body[data-palette="ember"][data-theme="dark"] {
+  color-scheme: dark;
+  --bg-page:       #1a0f08;
+  --ink:           #f5e6d3;
+  --ink-secondary: #d8b998;
+  --ink-muted:     #8f6f52;
+  --rule:          #3a2818;
+  --tier-0: #f9efd2; --tier-0-ink: #3a1c0e;
+  --tier-1: #f6e2b6; --tier-1-ink: #3a1c0e;
+  --tier-2: #f3d39b; --tier-2-ink: #3a1c0e;
+  --tier-3: #efc080; --tier-3-ink: #3a1c0e;
+  --tier-4: #ecab65; --tier-4-ink: #3a1c0e;
+  --tier-5: #e99449; --tier-5-ink: #3a1c0e;
+  --tier-6: #e57a2e; --tier-6-ink: #3a1c0e;
+  --tier-7: #da5f1b; --tier-7-ink: #3a1c0e;
+  --tier-8: #bf4a18; --tier-8-ink: #ffffff;
+  --tier-9: #a33814; --tier-9-ink: #ffffff;
+}
+body[data-palette="ember"][data-theme="light"] {
+  color-scheme: light;
+  --bg-page:       #faf3e8;
+  --ink:           #2a1608;
+  --ink-secondary: #6b4a30;
+  --ink-muted:     #a08868;
+  --rule:          #e8d9c0;
+  --tier-0: #f3d39b; --tier-0-ink: #3a1c0e;
+  --tier-1: #efc080; --tier-1-ink: #3a1c0e;
+  --tier-2: #ecab65; --tier-2-ink: #3a1c0e;
+  --tier-3: #e99449; --tier-3-ink: #3a1c0e;
+  --tier-4: #e57a2e; --tier-4-ink: #3a1c0e;
+  --tier-5: #da5f1b; --tier-5-ink: #3a1c0e;
+  --tier-6: #bf4a18; --tier-6-ink: #ffffff;
+  --tier-7: #a33814; --tier-7-ink: #ffffff;
+  --tier-8: #882811; --tier-8-ink: #ffffff;
+  --tier-9: #6d1b0d; --tier-9-ink: #ffffff;
+}
+
 * { box-sizing: border-box; }
 html, body {
   margin: 0;

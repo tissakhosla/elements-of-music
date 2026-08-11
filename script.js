@@ -1,5 +1,6 @@
 // Elements of Music — renders the tier pyramid (and its Y axis) into the
-// page from TIERS (data.js).
+// page from a tier list (data.js). Each page calls renderPyramid(tiers)
+// on DOMContentLoaded with whichever list it wants (TIERS, ENSEMBLE_TIERS).
 
 function chip(label) {
   const el = document.createElement("span");
@@ -71,12 +72,10 @@ function renderAxisSegment(tier) {
   return el;
 }
 
-function render() {
+function renderPyramid(tiers) {
   const main = document.getElementById("pyramid");
-  main.replaceChildren(...TIERS.map(renderTier));
+  main.replaceChildren(...tiers.map(renderTier));
 
   const track = document.getElementById("axis-track");
-  track.replaceChildren(...TIERS.map(renderAxisSegment));
+  track.replaceChildren(...tiers.map(renderAxisSegment));
 }
-
-document.addEventListener("DOMContentLoaded", render);
